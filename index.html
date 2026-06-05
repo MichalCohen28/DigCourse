@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container-wrapper {
+            max-width: 600px;
+            margin: 20px auto;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        /* עיצוב אזור כפתורי ההורדה */
+        .download-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .download-btn {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            background-color: #0076ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* עיצוב רכיב הלפני/אחרי */
+        .comparison-slider {
+            position: relative;
+            width: 100%;
+            height: 400px; /* גובה ברירת מחדל - ישתנה בהתאם לצורך */
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            user-select: none;
+        }
+
+        .comparison-slider img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-before {
+            z-index: 1;
+        }
+
+        .image-after {
+            z-index: 2;
+            width: 50%; /* מצב התחלתי - חצי חצי */
+        }
+
+        /* סליידר הגרירה הנסתר */
+        .slider-input {
+            position: absolute;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 3;
+            cursor: col-resize;
+            margin: 0;
+            top: 0;
+            left: 0;
+        }
+
+        .slider-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 4px;
+            height: 400px;
+            background: #ffffff;
+            cursor: col-resize;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* קו ההפרדה הויזואלי והחץ */
+        .slider-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background-color: #ffffff;
+            z-index: 2;
+            transform: translateX(-50%);
+            pointer-events: none;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            z-index: 2;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .slider-button::before { content: "↔"; }
+    </style>
+</head>
+<body>
+
+<div class="container-wrapper">
+
+    <div class="download-links">
+        <a href="כאן_שמים_קישור_ישיר_להורדת_קובץ_המקור" download class="download-btn">
+            📥 הורדת תמונת מקור (לפני)
+        </a>
+        <a href="כאן_שמים_קישור_ישיר_להורדת_הפריסט" download class="download-btn">
+            ✨ הורדת פריסט לעריכה (אחרי)
+        </a>
+    </div>
+
+    <div class="comparison-slider" id="sliderContainer">
+        <img class="image-before" src="כאן_שמים_קישור_לתמונת_המקור_לפני_העריכה" alt="לפני">
+        
+        <img class="image-after" id="afterImage" src="כאן_שמים_קישור_לתמונה_הערוכה_אחרי" alt="אחרי">
+        
+        <div class="slider-line" id="sliderLine"></div>
+        <div class="slider-button" id="sliderBtn"></div>
+        
+        <input type="range" min="0" max="100" value="50" class="slider-input" id="sliderRange">
+    </div>
+
+</div>
+
+<script>
+    const slider = document.getElementById('sliderRange');
+    const afterImage = document.getElementById('afterImage');
+    const sliderLine = document.getElementById('sliderLine');
+    const sliderBtn = document.getElementById('sliderBtn');
+
+    slider.addEventListener('input', (e) => {
+        const value = e.target.value;
+        // חותך את תמונת ה"אחרי" משמאל לימין בהתאם לגרירה
+        afterImage.style.width = `${value}%`;
+        // מזיז את קו ההפרדה והכפתור הויזואלי
+        sliderLine.style.left = `${value}%`;
+        sliderBtn.style.left = `${value}%`;
+    });
+</script>
+
+</body>
+</html>
