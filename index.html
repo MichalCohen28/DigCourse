@@ -1,11 +1,10 @@
-:מחולל סליידר לפני/אחרי מעוצב ללייטרום:index.html
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מחולל סליידר לפני/אחרי אינטראקטיבי לקורסים</title>
-    <!-- Tailwind CSS for Generator UI -->
+    <title>תרגול מעשי - לפני ואחרי</title>
+    <!-- Tailwind CSS for high-end styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap');
@@ -13,649 +12,170 @@
             font-family: 'Assistant', sans-serif;
             background-color: #0b0f19;
         }
-        /* Custom scrollbar for beautiful dark UI */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #334155;
+        
+        /* מניעת גלילת עמוד מציקה בניידים בזמן גרירת הסליידר */
+        .slider-container {
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
         }
     </style>
 </head>
-<body class="text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+<body class="text-slate-100 min-h-screen py-10 px-4 md:px-8">
 
-    <!-- Header -->
-    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50 px-4 py-4">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-                <!-- Lightroom Stylized Custom Icon -->
-                <div class="w-10 h-10 bg-gradient-to-br from-sky-400 to-indigo-600 rounded-lg flex items-center justify-center font-bold text-white tracking-tighter text-lg shadow-lg shadow-indigo-500/20">
-                    Lr
-                </div>
-                <div>
-                    <h1 class="text-xl font-bold tracking-wide bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">מחולל סליידר לפני/אחרי ללייטרום</h1>
-                    <p class="text-xs text-slate-400">עצבי סליידרים מהממים והורידי קוד מוכן להטמעה ישירה בסקולר או בגיטאהב</p>
-                </div>
-            </div>
-            <div class="flex items-center gap-2">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    <span class="w-1.5 h-1.5 mr-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
-                    מוכן להטמעה בסקולר (Schooler)
-                </span>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Workspace -->
-    <main class="max-w-7xl mx-auto w-full px-4 py-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <div class="max-w-6xl mx-auto">
         
-        <!-- Left Side: Configurator Panel -->
-        <section class="lg:col-span-5 flex flex-col gap-6">
-            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-xl backdrop-blur-sm">
-                <div class="flex items-center gap-2 mb-5">
-                    <span class="text-xl">🛠️</span>
-                    <h2 class="text-lg font-bold text-slate-200">הגדרות המדריך והקבצים</h2>
+        <!-- כותרת ראשית של הדף -->
+        <div class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">2 פריסטים שאני משתמשת בהם המון</h1>
+            <p class="text-slate-400 text-sm md:text-base mt-2">הורידו את קובצי התרגול והעבירו את הסליידר כדי לראות את כיוון העריכה הנכון</p>
+        </div>
+
+        <!-- גריד שני טורים (ימין ושמאל) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            
+            <!-- טור ימין (תרגיל 1) -->
+            <div class="flex flex-col gap-4">
+                <div class="border-b border-slate-800 pb-2">
+                    <h2 class="text-lg font-bold text-slate-200">תרגיל 1: עריכת תאורת יום</h2>
                 </div>
                 
-                <div class="space-y-5">
-                    <!-- Images mode toggle -->
-                    <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-2">שימוש בתמונות:</label>
-                        <div class="grid grid-cols-2 gap-2 bg-slate-950 p-1 rounded-xl border border-slate-800">
-                            <button id="btnTwoImages" class="py-2 text-xs font-semibold rounded-lg transition-all bg-indigo-600 text-white shadow" onclick="setImageMode('two')">
-                                2 תמונות שונות (לפני/אחרי)
-                            </button>
-                            <button id="btnOneImage" class="py-2 text-xs font-semibold rounded-lg transition-all text-slate-400 hover:text-slate-200" onclick="setImageMode('one')">
-                                תמונה אחת + פילטר RAW אוטומטי
-                            </button>
+                <!-- כפתור הורדת קובץ לתרגיל 1 -->
+                <a href="כאן_שמים_קישור_להורדה_של_קובץ_1" download class="group flex items-center justify-between p-4 bg-slate-900 hover:bg-slate-850 border border-slate-800 rounded-2xl transition-all shadow-lg hover:translate-y-[-2px]">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">📥</span>
+                        <div class="text-right">
+                            <span class="block text-sm font-bold text-slate-200">קובץ מקור לתרגיל 1</span>
+                            <span class="block text-[11px] text-slate-500">לחצו להורדה ישירה של קובץ ה-RAW</span>
                         </div>
                     </div>
+                    <span class="text-xs font-bold text-blue-400 group-hover:underline">להורדה ←</span>
+                </a>
 
-                    <!-- Image Input 1 (After / Single) -->
-                    <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-1.5" id="lblImgAfter">
-                            קישור לתמונה הערוכה (אחרי):
-                        </label>
-                        <input type="text" id="imgAfterUrl" 
-                               value="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" 
-                               placeholder="הדביקי קישור לתמונה (URL)..." 
-                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
-                               oninput="updatePreview()">
-                        <p class="text-[11px] text-slate-500 mt-1">מאיפה הקישור? תוכלי להעלות את התמונות לשרת של סקולר, לגיטאהב או לדרייב.</p>
-                    </div>
-
-                    <!-- Image Input 2 (Before - Hidden in Single Image Mode) -->
-                    <div id="beforeImageGroup">
-                        <label class="block text-sm font-medium text-slate-300 mb-1.5">
-                            קישור לתמונת המקור (לפני):
-                        </label>
-                        <input type="text" id="imgBeforeUrl" 
-                               value="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" 
-                               placeholder="הדביקי קישור לתמונת המקור..." 
-                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
-                               oninput="updatePreview()">
-                        <p class="text-[11px] text-slate-500 mt-1">אם יש לך תמונה מקורית לא ערוכה בנפרד, הדביקי אותה כאן.</p>
-                    </div>
-
-                    <hr class="border-slate-800/60 my-2">
-
-                    <!-- Download Link 1 (RAW File) -->
-                    <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-1.5">
-                            קישור להורדה ישירה של קובץ המקור (לפני):
-                        </label>
-                        <input type="text" id="rawDownloadUrl" 
-                               value="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" 
-                               placeholder="קישור לגוגל דרייב / שרת אחר..." 
-                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
-                               oninput="updatePreview()">
-                    </div>
-
-                    <!-- Download Link 2 (Preset File) -->
-                    <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-1.5">
-                            קישור להורדה ישירה של הפריסט (אחרי):
-                        </label>
-                        <input type="text" id="presetDownloadUrl" 
-                               value="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" 
-                               placeholder="קישור להורדת קובץ הפריסט..." 
-                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
-                               oninput="updatePreview()">
-                    </div>
-
-                    <!-- Styling Customization -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-1.5">צבע כפתור "אחרי":</label>
-                            <div class="flex items-center gap-2">
-                                <input type="color" id="colorAccent" value="#3b82f6" class="w-10 h-10 bg-transparent border-0 rounded cursor-pointer" oninput="updatePreview()">
-                                <span class="text-xs text-slate-400 font-mono" id="colorAccentHex">#3b82f6</span>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-1.5">גובה הסליידר (פיקסלים):</label>
-                            <input type="number" id="sliderHeight" value="450" min="250" max="800" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition-all" oninput="updatePreview()">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Download & Export Section -->
-            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-xl backdrop-blur-sm flex flex-col gap-4">
-                <h3 class="text-sm font-bold text-slate-200 flex items-center gap-2">
-                    <span>💾</span> ייצוא הקוד לסקולר / גיטאהב
-                </h3>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                    הקוד המופק הוא קוד עצמאי לחלוטין (HTML ו-CSS טהור). הוא לא דורש ספריות חיצוניות, ולכן הוא לא ייחסם לעולם על ידי המערכות של סקולר ויוצג בצורה יציבה ובטוחה.
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
-                    <button onclick="copyGeneratedCode()" class="flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold py-3 px-4 rounded-xl shadow-lg shadow-emerald-500/10 active:scale-95 transition-all text-sm">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
-                        העתק קוד לסקולר
-                    </button>
-                    <button onclick="downloadAsHtmlFile()" class="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-4 rounded-xl active:scale-95 transition-all text-sm border border-slate-700">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                        הורד קובץ HTML
-                    </button>
-                </div>
-                <div id="toastSuccess" class="hidden text-center bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 py-2 rounded-lg text-xs font-semibold animate-pulse">
-                     קוד המקור הועתק בהצלחה ללוח! הדביקי אותו ישירות בסקולר 🎉
-                </div>
-            </div>
-        </section>
-
-        <!-- Right Side: Live Interactive Preview -->
-        <section class="lg:col-span-7 flex flex-col gap-6">
-            
-            <!-- Preview Title Card -->
-            <div class="flex items-center justify-between">
-                <span class="text-xs uppercase tracking-wider text-slate-500 font-bold">הצגה מקדימה חיה (מצב תלמיד)</span>
-                <span class="text-xs text-indigo-400 font-medium bg-indigo-500/10 px-2 py-0.5 rounded-full border border-indigo-500/20">אינטראקטיבי</span>
-            </div>
-
-            <!-- The Real Interactive Embed Component Simulator -->
-            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 to-transparent pointer-events-none"></div>
-
-                <!-- Simulation Wrapper -->
-                <div class="relative z-10 mx-auto max-w-[650px]">
+                <!-- סליידר תמונה 1 -->
+                <div id="sliderContainer1" class="slider-container relative w-full overflow-hidden rounded-2xl shadow-2xl border border-slate-800 bg-slate-950 cursor-col-resize" style="height: 400px;">
+                    <!-- תמונת לפני (בסיס - מוצגת בצד שמקבל חיתוך) -->
+                    <img src="כאן_שמים_קישור_לתמונת_לפני_1" alt="לפני" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
                     
-                    <!-- Download buttons mimicking the premium design -->
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <a id="btnPrevRaw" href="#" download class="group flex items-center justify-center gap-2 py-3.5 px-4 bg-slate-800 hover:bg-slate-750 text-slate-200 hover:text-white border border-slate-700/80 rounded-2xl font-bold text-xs sm:text-sm text-center shadow-lg transition-all active:scale-95 duration-200">
-                            <span class="text-lg group-hover:scale-110 transition-transform">📥</span>
-                            הורדת תמונת מקור (לפני)
-                        </a>
-                        <a id="btnPrevPreset" href="#" download class="group flex items-center justify-center gap-2 py-3.5 px-4 text-white font-bold text-xs sm:text-sm text-center rounded-2xl shadow-lg transition-all active:scale-95 duration-200" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-                            <span class="text-lg group-hover:scale-110 transition-transform">✨</span>
-                            הורדת פריסט לייטרום (אחרי)
-                        </a>
+                    <!-- תמונת אחרי (עליונה שנחתכת מהימין כדי לחשוף את הלפני) -->
+                    <img id="afterImg1" src="כאן_שמים_קישור_לתמונת_אחרי_1" alt="אחרי" class="absolute inset-0 w-full h-full object-cover pointer-events-none" style="clip-path: inset(0 50% 0 0);">
+                    
+                    <!-- תוויות צפות -->
+                    <span class="absolute top-4 right-4 z-20 backdrop-blur-md bg-black/60 text-slate-200 border border-white/10 px-3 py-1 rounded-full text-xs font-bold pointer-events-none">לפני</span>
+                    <span class="absolute top-4 left-4 z-20 backdrop-blur-md bg-black/60 text-slate-200 border border-white/10 px-3 py-1 rounded-full text-xs font-bold pointer-events-none">אחרי</span>
+                    
+                    <!-- קו הפרדה ויזואלי -->
+                    <div class="absolute top-0 bottom-0 z-20 pointer-events-none" id="line1" style="left: 50%; width: 3px; background-color: #ffffff; transform: translateX(-50%); box-shadow: 0 0 10px rgba(0,0,0,0.5);"></div>
+                    
+                    <!-- כפתור גרירה מעוצב -->
+                    <div class="absolute top-1/2 z-20 pointer-events-none w-10 h-10 bg-white rounded-full shadow-2xl flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-100 group-hover:scale-110" id="handle1" style="left: 50%;">
+                        <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 3 4 3m8-6l4 3-4 3"/></svg>
                     </div>
-
-                    <!-- Comparison Slider -->
-                    <div class="relative w-full overflow-hidden rounded-2xl shadow-2xl select-none group border border-slate-800" id="prevSliderContainer" style="height: 450px;">
-                        
-                        <!-- Before Image (Base Image on the right side) -->
-                        <img id="prevImgBefore" src="" alt="תמונת מקור לפני עריכה" class="absolute inset-0 w-full h-full object-cover pointer-events-none" onerror="handleImageError(this, 'before')">
-                        
-                        <!-- After Image (Clipped on top on the left side) -->
-                        <img id="prevImgAfter" src="" alt="תמונה ערוכה אחרי" class="absolute inset-0 w-full h-full object-cover pointer-events-none" style="clip-path: inset(0 0 0 50%);" onerror="handleImageError(this, 'after')">
-                        
-                        <!-- Text Overlays (לפני / אחרי) -->
-                        <div class="absolute top-4 right-4 z-20 pointer-events-none">
-                            <span class="backdrop-blur-md bg-black/50 text-slate-200 border border-white/10 px-3 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">לפני</span>
-                        </div>
-                        <div class="absolute top-4 left-4 z-20 pointer-events-none">
-                            <span class="backdrop-blur-md bg-black/50 text-slate-200 border border-white/10 px-3 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">אחרי</span>
-                        </div>
-
-                        <!-- Invisible Range Input overlaid on the entire container to support effortless drag/touch anywhere -->
-                        <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-col-resize z-30 m-0" id="prevRangeInput" oninput="handleSliderMove(this.value)">
-
-                        <!-- Visible Drag Divider Bar -->
-                        <div class="absolute top-0 bottom-0 z-20 pointer-events-none" id="prevDividerLine" style="left: 50%; width: 3px; background-color: #ffffff; box-shadow: 0 0 10px rgba(0,0,0,0.4); transform: translateX(-50%);"></div>
-
-                        <!-- Visible Drag Button/Handle -->
-                        <div class="absolute top-1/2 z-20 pointer-events-none w-10 h-10 bg-white rounded-full shadow-2xl flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2" id="prevDragBtn" style="left: 50%;">
-                            <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 3 4 3m8-6l4 3-4 3"/></svg>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
-            <!-- Generated Code Real-time View -->
-            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6">
-                <h3 class="text-sm font-bold text-slate-300 mb-3 flex items-center gap-2">
-                    <span>💻</span> קוד המקור שייווצר עבורך
-                </h3>
-                <div class="relative">
-                    <pre class="bg-slate-950 p-4 rounded-xl text-xs text-indigo-300 font-mono overflow-x-auto max-h-48 scrollbar" id="codeArea">טוען קוד...</pre>
+            <!-- טור שמאל (תרגיל 2) -->
+            <div class="flex flex-col gap-4">
+                <div class="border-b border-slate-800 pb-2">
+                    <h2 class="text-lg font-bold text-slate-200">תרגיל 2: עריכת פורטרט בשקיעה</h2>
+                </div>
+                
+                <!-- כפתור הורדת קובץ לתרגיל 2 -->
+                <a href="כאן_שמים_קישור_להורדה_של_קובץ_2" download class="group flex items-center justify-between p-4 bg-slate-900 hover:bg-slate-850 border border-slate-800 rounded-2xl transition-all shadow-lg hover:translate-y-[-2px]">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">✨</span>
+                        <div class="text-right">
+                            <span class="block text-sm font-bold text-slate-200">קובץ פריסט לתרגיל 2</span>
+                            <span class="block text-[11px] text-slate-500">לחצו להורדה ישירה של קובץ ה-XMP</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-blue-400 group-hover:underline">להורדה ←</span>
+                </a>
+
+                <!-- סליידר תמונה 2 -->
+                <div id="sliderContainer2" class="slider-container relative w-full overflow-hidden rounded-2xl shadow-2xl select-none border border-slate-800 bg-slate-950 cursor-col-resize" style="height: 400px;">
+                    <!-- תמונת לפני (בסיס) -->
+                    <img src="כאן_שמים_קישור_לתמונת_לפני_2" alt="לפני" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+                    
+                    <!-- תמונת אחרי (עליונה שנחתכת) -->
+                    <img id="afterImg2" src="כאן_שמים_קישור_לתמונת_אחרי_2" alt="אחרי" class="absolute inset-0 w-full h-full object-cover pointer-events-none" style="clip-path: inset(0 50% 0 0);">
+                    
+                    <!-- תוויות צפות -->
+                    <span class="absolute top-4 right-4 z-20 backdrop-blur-md bg-black/60 text-slate-200 border border-white/10 px-3 py-1 rounded-full text-xs font-bold pointer-events-none">לפני</span>
+                    <span class="absolute top-4 left-4 z-20 backdrop-blur-md bg-black/60 text-slate-200 border border-white/10 px-3 py-1 rounded-full text-xs font-bold pointer-events-none">אחרי</span>
+                    
+                    <!-- קו הפרדה ויזואלי -->
+                    <div class="absolute top-0 bottom-0 z-20 pointer-events-none" id="line2" style="left: 50%; width: 3px; background-color: #ffffff; transform: translateX(-50%); box-shadow: 0 0 10px rgba(0,0,0,0.5);"></div>
+                    
+                    <!-- כפתור גרירה מעוצב -->
+                    <div class="absolute top-1/2 z-20 pointer-events-none w-10 h-10 bg-white rounded-full shadow-2xl flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2" id="handle2" style="left: 50%;">
+                        <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 3 4 3m8-6l4 3-4 3"/></svg>
+                    </div>
                 </div>
             </div>
 
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="border-t border-slate-900 bg-slate-950/80 py-6 text-center text-xs text-slate-500">
-        <div class="max-w-7xl mx-auto px-4">
-            <p>פותח באהבה עבור קורסי לייטרום דיגיטליים בסקולר • 2026</p>
         </div>
-    </footer>
 
-    <!-- JavaScript logic -->
+    </div>
+
+    <!-- Script implementation with professional custom Pointer Events drag logic -->
     <script>
-        let currentMode = 'two'; // 'two' or 'one'
-        
-        // Beautiful fallback Unsplash placeholder images in case of broken links
-        const fallbackBeforeImg = "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80";
-        const fallbackAfterImg = "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80";
-
-        window.onload = function() {
-            updatePreview();
-        };
-
-        function setImageMode(mode) {
-            currentMode = mode;
-            const btnTwo = document.getElementById('btnTwoImages');
-            const btnOne = document.getElementById('btnOneImage');
-            const beforeGroup = document.getElementById('beforeImageGroup');
-            const lblAfter = document.getElementById('lblImgAfter');
-
-            if (mode === 'two') {
-                btnTwo.className = "py-2 text-xs font-semibold rounded-lg transition-all bg-indigo-600 text-white shadow";
-                btnOne.className = "py-2 text-xs font-semibold rounded-lg transition-all text-slate-400 hover:text-slate-200";
-                beforeGroup.style.display = "block";
-                lblAfter.innerText = "קישור לתמונה הערוכה (אחרי):";
-            } else {
-                btnTwo.className = "py-2 text-xs font-semibold rounded-lg transition-all text-slate-400 hover:text-slate-200";
-                btnOne.className = "py-2 text-xs font-semibold rounded-lg transition-all bg-indigo-600 text-white shadow";
-                beforeGroup.style.display = "none";
-                lblAfter.innerText = "קישור לתמונה המקורית (אחת):";
-            }
-            updatePreview();
-        }
-
-        function handleImageError(img, type) {
-            // Soft failure: replace with gorgeous landscape placeholder if link is empty or broken
-            if(type === 'after') {
-                img.src = fallbackAfterImg;
-            } else {
-                img.src = fallbackBeforeImg;
-                if(currentMode === 'one') {
-                    img.style.filter = "saturate(0.2) contrast(0.8) brightness(0.85) sepia(0.1)";
-                }
-            }
-        }
-
-        function handleSliderMove(value) {
-            const imgAfter = document.getElementById('prevImgAfter');
-            const divider = document.getElementById('prevDividerLine');
-            const btn = document.getElementById('prevDragBtn');
+        // פונקציית אתחול חכמה שמחליפה את ה-input range המקולקל
+        function initPremiumSlider(containerId, afterImgId, lineId, handleId) {
+            const container = document.getElementById(containerId);
+            const afterImg = document.getElementById(afterImgId);
+            const line = document.getElementById(lineId);
+            const handle = document.getElementById(handleId);
             
-            // clipPath from the left side (hides 'after' image, showing the 'before' image underneath)
-            imgAfter.style.clipPath = `inset(0 0 0 ${value}%)`;
-            divider.style.left = `${value}%`;
-            btn.style.left = `${value}%`;
-        }
+            let isDragging = false;
 
-        function updatePreview() {
-            const imgAfterUrl = document.getElementById('imgAfterUrl').value || fallbackAfterImg;
-            const imgBeforeUrl = currentMode === 'two' ? (document.getElementById('imgBeforeUrl').value || fallbackBeforeImg) : imgAfterUrl;
-            
-            const rawDownload = document.getElementById('rawDownloadUrl').value;
-            const presetDownload = document.getElementById('presetDownloadUrl').value;
-            const accentColor = document.getElementById('colorAccent').value;
-            const height = document.getElementById('sliderHeight').value;
+            // פונקציה לעדכון מיקום קו החיתוך
+            function updateSliderPosition(clientX) {
+                const rect = container.getBoundingClientRect();
+                let posX = clientX - rect.left;
+                
+                // חישוב באחוזים מ-0 עד 100
+                let percentage = (posX / rect.width) * 100;
+                
+                // הגבלה חיונית כדי שהתמונה לא תברח מהמסגרת
+                if (percentage < 0) percentage = 0;
+                if (percentage > 100) percentage = 100;
 
-            document.getElementById('colorAccentHex').innerText = accentColor;
-
-            // Update live preview images
-            const prevImgAfter = document.getElementById('prevImgAfter');
-            const prevImgBefore = document.getElementById('prevImgBefore');
-
-            prevImgAfter.src = imgAfterUrl;
-            prevImgBefore.src = imgBeforeUrl;
-
-            // Apply RAW filter to the background image if in single-image mode
-            if (currentMode === 'one') {
-                prevImgBefore.style.filter = "saturate(0.2) contrast(0.8) brightness(0.85) sepia(0.1)";
-            } else {
-                prevImgBefore.style.filter = "none";
+                // ביצוע החיתוך הויזואלי (אחרי בצד ימין, לפני בצד שמאל)
+                afterImg.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+                line.style.left = `${percentage}%`;
+                handle.style.left = `${percentage}%`;
             }
 
-            // Update slider container height
-            document.getElementById('prevSliderContainer').style.height = `${height}px`;
+            // אירוע לחיצה / מגע ראשוני
+            container.addEventListener('pointerdown', (e) => {
+                isDragging = true;
+                container.setPointerCapture(e.pointerId); // לכידת הסמן גם אם יוצא לרגע מהמסגרת
+                updateSliderPosition(e.clientX);
+            });
 
-            // Update live preview links & styling
-            const btnPrevRaw = document.getElementById('btnPrevRaw');
-            const btnPrevPreset = document.getElementById('btnPrevPreset');
+            // אירוע תנועת עכבר / גרירת מגע
+            container.addEventListener('pointermove', (e) => {
+                if (!isDragging) return;
+                updateSliderPosition(e.clientX);
+            });
 
-            btnPrevRaw.href = rawDownload;
-            btnPrevPreset.href = presetDownload;
-            btnPrevPreset.style.background = `linear-gradient(135deg, ${accentColor} 0%, ${darkenColor(accentColor, 20)} 100%)`;
-            btnPrevPreset.style.boxShadow = `0 4px 15px ${accentColor}40`;
+            // אירוע שחרור הלחיצה
+            container.addEventListener('pointerup', (e) => {
+                isDragging = false;
+                container.releasePointerCapture(e.pointerId);
+            });
 
-            // Re-trigger slide calculation
-            const currentVal = document.getElementById('prevRangeInput').value;
-            handleSliderMove(currentVal);
-
-            // Generate HTML Output
-            const code = generateEmbedCode(imgBeforeUrl, imgAfterUrl, rawDownload, presetDownload, accentColor, height, currentMode);
-            document.getElementById('codeArea').innerText = code;
-        }
-
-        // Helper to darken colors for a beautiful premium gradient
-        function darkenColor(hex, percent) {
-            let num = parseInt(hex.replace("#",""), 16),
-                amt = Math.round(2.55 * percent),
-                R = (num >> 16) - amt,
-                G = (num >> 8 & 0x00FF) - amt,
-                B = (num & 0x0000FF) - amt;
-            return "#" + (0x1000000 + (R<0?0:R>255?255:R)*0x10000 + (G<0?0:G>255?255:G)*0x100 + (B<0?0:B>255?255:B)).toString(16).slice(1);
-        }
-
-        // Beautiful generator that produces 100% self-contained pure HTML and CSS code
-        function generateEmbedCode(beforeUrl, afterUrl, rawLink, presetLink, accent, height, mode) {
-            const rawFilterStyle = mode === 'one' ? 'filter: saturate(0.25) contrast(0.85) brightness(0.85) sepia(0.1);' : '';
-            return `<!-- התחלת קוד סליידר לפני ואחרי מעוצב לקורס -->
-<div class="lightroom-comparison-widget">
-    <!-- כפתורי הורדה מעוצבים -->
-    <div class="lr-download-bar">
-        <a href="${rawLink}" download class="lr-btn lr-btn-before">
-            <span class="lr-icon">📥</span>
-            הורדת תמונת מקור (לפני)
-        </a>
-        <a href="${presetLink}" download class="lr-btn lr-btn-after">
-            <span class="lr-icon">✨</span>
-            הורדת פריסט לייטרום (אחרי)
-        </a>
-    </div>
-
-    <!-- רכיב הסליידר -->
-    <div class="lr-slider-container">
-        <!-- תמונת מקור (בסיס) -->
-        <img class="lr-img lr-img-before" src="${beforeUrl}" alt="לפני" style="${rawFilterStyle}">
-        
-        <!-- תמונה ערוכה (נחתכת) -->
-        <img class="lr-img lr-img-after" id="lrAfterImg" src="${afterUrl}" alt="אחרי">
-        
-        <!-- תגיות ויזואליות -->
-        <span class="lr-badge lr-badge-right">לפני</span>
-        <span class="lr-badge lr-badge-left">אחרי</span>
-        
-        <!-- סליידר פיזי נסתר לגרירה -->
-        <input type="range" min="0" max="100" value="50" class="lr-range-input" id="lrRangeCtrl">
-        
-        <!-- קו ההפרדה והכפתור -->
-        <div class="lr-divider-line" id="lrLine"></div>
-        <div class="lr-handle-button" id="lrHandle">
-            <svg class="lr-arrow-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 3 4 3m8-6l4 3-4 3"/></svg>
-        </div>
-    </div>
-</div>
-
-<style>
-    /* עיצוב כללי של אזור הרכיב */
-    .lightroom-comparison-widget {
-        max-width: 650px;
-        margin: 20px auto;
-        font-family: 'Assistant', system-ui, -apple-system, sans-serif;
-        direction: rtl;
-    }
-    
-    /* סרגל כפתורי ההורדה */
-    .lr-download-bar {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-        margin-bottom: 20px;
-    }
-    
-    .lr-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        padding: 14px 20px;
-        font-weight: bold;
-        font-size: 14px;
-        text-decoration: none;
-        border-radius: 16px;
-        transition: all 0.25s ease;
-        text-align: center;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    
-    .lr-btn-before {
-        background-color: #1e293b;
-        color: #f1f5f9;
-        border: 1px solid #334155;
-    }
-    
-    .lr-btn-before:hover {
-        background-color: #334155;
-        color: #ffffff;
-        transform: translateY(-2px);
-    }
-    
-    .lr-btn-after {
-        background: linear-gradient(135deg, ${accent} 0%, ${darkenColor(accent, 20)} 100%);
-        color: #ffffff;
-        box-shadow: 0 4px 15px ${accent}30;
-    }
-    
-    .lr-btn-after:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px ${accent}50;
-    }
-    
-    .lr-icon {
-        font-size: 16px;
-        transition: transform 0.2s ease;
-    }
-    
-    .lr-btn:hover .lr-icon {
-        transform: scale(1.15);
-    }
-    
-    /* מיכל הסליידר */
-    .lr-slider-container {
-        position: relative;
-        width: 100%;
-        height: ${height}px;
-        overflow: hidden;
-        border-radius: 20px;
-        border: 1px solid #334155;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-    
-    /* הגדרות התמונות */
-    .lr-img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        pointer-events: none;
-        user-select: none;
-    }
-    
-    .lr-img-before {
-        z-index: 1;
-    }
-    
-    .lr-img-after {
-        z-index: 2;
-        clip-path: inset(0 0 0 50%);
-    }
-    
-    /* תגיות לפני / אחרי */
-    .lr-badge {
-        position: absolute;
-        top: 16px;
-        z-index: 22;
-        background: rgba(0, 0, 0, 0.55);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        color: #f1f5f9;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 5px 14px;
-        border-radius: 30px;
-        font-size: 12px;
-        font-weight: bold;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-        pointer-events: none;
-    }
-    
-    .lr-badge-right {
-        right: 16px;
-    }
-    
-    .lr-badge-left {
-        left: 16px;
-    }
-    
-    /* קלט הסליידר - אחראי על הגרירה האינטראקטיבית */
-    .lr-range-input {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        cursor: col-resize;
-        z-index: 30;
-        margin: 0;
-    }
-    
-    /* קו הפרדה ויזואלי */
-    .lr-divider-line {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        width: 3px;
-        background-color: #ffffff;
-        z-index: 25;
-        transform: translateX(-50%);
-        pointer-events: none;
-        box-shadow: 0 0 8px rgba(0,0,0,0.3);
-    }
-    
-    /* כפתור גרירה ויזואלי */
-    .lr-handle-button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 40px;
-        height: 40px;
-        background-color: #ffffff;
-        border-radius: 50%;
-        z-index: 26;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .lr-arrow-svg {
-        width: 20px;
-        height: 20px;
-        color: #1e293b;
-    }
-    
-    /* התאמה למסכים קטנים וניידים */
-    @media (max-width: 480px) {
-        .lr-download-bar {
-            grid-template-columns: 1fr;
-            gap: 10px;
-        }
-        .lr-slider-container {
-            height: 350px !important;
-        }
-    }
-</style>
-
-<script>
-    (function() {
-        const slider = document.getElementById('lrRangeCtrl');
-        const imgAfter = document.getElementById('lrAfterImg');
-        const line = document.getElementById('lrLine');
-        const handle = document.getElementById('lrHandle');
-        
-        if (slider && imgAfter && line && handle) {
-            slider.addEventListener('input', function(e) {
-                const val = e.target.value;
-                imgAfter.style.clipPath = 'inset(0 0 0 ' + val + '%)';
-                line.style.left = val + '%';
-                handle.style.left = val + '%';
+            // במקרה של ביטול המחווה
+            container.addEventListener('pointercancel', () => {
+                isDragging = false;
             });
         }
-    })();
-<\/script>
-<!-- סיום קוד סליידר לפני ואחרי -->`;
-        }
 
-        function copyGeneratedCode() {
-            const code = document.getElementById('codeArea').innerText;
-            
-            // Modern copy logic with robust fallback for iframe/sandbox restrictions
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(code).then(showToast, fallbackCopy);
-            } else {
-                fallbackCopy();
-            }
-
-            function fallbackCopy() {
-                const textarea = document.createElement("textarea");
-                textarea.value = code;
-                textarea.style.position = "fixed"; 
-                document.body.appendChild(textarea);
-                textarea.select();
-                try {
-                    document.execCommand('copy');
-                    showToast();
-                } catch (err) {
-                    console.error("לא ניתן היה להעתיק את הקוד באופן אוטומטי", err);
-                }
-                document.body.removeChild(textarea);
-            }
-
-            function showToast() {
-                const toast = document.getElementById('toastSuccess');
-                toast.classList.remove('hidden');
-                setTimeout(() => {
-                    toast.classList.add('hidden');
-                }, 4000);
-            }
-        }
-
-        function downloadAsHtmlFile() {
-            const code = document.getElementById('codeArea').innerText;
-            const blob = new Blob([code], { type: 'text/html;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'lightroom-before-after.html';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
+        // הפעלת שני הסליידרים בצורה עצמאית
+        initPremiumSlider('sliderContainer1', 'afterImg1', 'line1', 'handle1');
+        initPremiumSlider('sliderContainer2', 'afterImg2', 'line2', 'handle2');
     </script>
+
 </body>
 </html>
-
